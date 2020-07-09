@@ -1,0 +1,101 @@
+.room {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .list {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+
+    /* 自己的消息 */
+    .public {
+      color: #80848f;
+      font-size: 12px;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    /* 自己的消息 */
+    .me {
+      margin-bottom: 6px;
+      overflow: hidden;
+
+      .name {
+        font-size: 12px;
+        color: #475aa7;
+        text-align: right;
+        clear: both;
+      }
+
+      .value {
+        font-size: 14px;
+        margin-top: 5px;
+        color: #495060;
+        word-break: break-all;
+        background-color: #e8ecfd;
+        padding: 8px 12px;
+        border-radius: 12px 0 12px 12px;
+        max-width: 80%;
+        float: right;
+      }
+    }
+
+    /* 别人的信息 */
+    .other {
+      margin-bottom: 6px;
+      .name {
+        font-size: 12px;
+        color: #475aa7;
+      }
+      .value {
+        font-size: 14px;
+        margin-top: 5px;
+        color: #495060;
+        word-break: break-all;
+        background-color: white;
+        padding: 8px 12px;
+        border-radius: 0 12px 12px;
+        max-width: 80%;
+        display: inline-block;
+      }
+    }
+  }
+
+  .send {
+    width: 100%;
+    display: flex;
+    padding: 8px;
+    background-color: white;
+
+    .input {
+      flex-grow: 1;
+      border: none;
+      outline: none;
+    }
+
+    .btn {
+      margin-left: 8px;
+    }
+  }
+
+  .down {
+    position: absolute;
+    bottom: 120px;
+    right: 0;
+    color: #475aa7;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 12px 0 0 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .hand {
+      width: 18px;
+      height: 18px;
+      margin-right: 3px;
+    }
+  }
+}

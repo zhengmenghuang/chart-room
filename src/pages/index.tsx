@@ -5,7 +5,7 @@ const IndexPage = () => {
   return (
     <div>
       <h1>Page index</h1>
-      <button onClick={() => history.push('/test')}>Test</button>
+      <button onClick={() => history.push('/chart-room')}>聊天室</button>
     </div>
   );
 };
