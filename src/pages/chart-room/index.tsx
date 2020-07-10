@@ -1,8 +1,22 @@
 import React from 'react';
 import styles from './index.less';
 import { Button } from 'antd-mobile';
+import { useMount } from '@umijs/hooks';
+import io from 'socket.io-client';
+import { getNowTimeParse } from '@/utils/util';
 
 function ChartRoomPage() {
+  let socket: any;
+  useMount(() => {
+    socket = io('ws://192.168.137.1:6001?id=' + 1);
+    socket.emit('join', {
+      name: '李四',
+      id: 4,
+      time: getNowTimeParse(),
+    });
+    socket.on('msg', console.log);
+  });
+
   return (
     <div className={styles.room}>
       <div className={styles.list}>

@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "@ant-design/pro-layout": "^5.0.12",
+    "@types/socket.io-client": "^1.4.33",
+    "@umijs/hooks": "^1.9.3",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.2.9",
     "lint-staged": "^10.0.7",
