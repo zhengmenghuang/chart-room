@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import styles from './index.less';
 import { Button, Toast } from 'antd-mobile';
 import {
-  useEventListener,
   useEventTarget,
   useKeyPress,
   useMount,
@@ -25,6 +24,9 @@ function ChartRoomPage() {
     { name: '赵六', id: 6 },
   ];
 
+  // 是否显示查看最新消息按钮 滚动到底部设置为false 新消息来的时候 不在最底部 设置为true
+  const [hasNewChart, setHasNewChart] = useState(false);
+
   // 聊天内容的列表
   const [record, setRecord]: any[] = useState([]);
 
@@ -44,7 +46,16 @@ function ChartRoomPage() {
     socket.on('msg', (value: any) => {
       record.push(value);
       setRecord([...record]);
-      scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
+      if (
+        scrollRef.current.scrollHeight -
+          scrollRef.current.clientHeight -
+          scrollRef.current.scrollTop <=
+        scrollRef.current.clientHeight * 0.3
+      ) {
+        scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
+      } else {
+        !hasNewChart && setHasNewChart(true);
+      }
     });
   });
 
@@ -69,12 +80,28 @@ function ChartRoomPage() {
   };
 
   // enter 键 发消息
-  const InputRef = useKeyPress('enter', () => {
-    sendMsg();
-  });
+  const InputRef = useKeyPress('enter', () => sendMsg());
+
+  // 点击按钮后 滚到最底部
+  const goBottom = () => {
+    setHasNewChart(false);
+    scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
+  };
+
+  // 监听页面滚动
+  const scroll = () => {
+    if (
+      scrollRef.current.scrollHeight -
+        scrollRef.current.clientHeight -
+        scrollRef.current.scrollTop <=
+      scrollRef.current.clientHeight * 0.3
+    ) {
+      hasNewChart && setHasNewChart(false);
+    }
+  };
 
   // 渲染列表
-  const ChartList = () => {
+  const ChartList: any = () => {
     return record.map((item: any) => {
       switch (item.type) {
         case 'join':
@@ -107,7 +134,7 @@ function ChartRoomPage() {
 
   return (
     <div className={styles.room}>
-      <div ref={scrollRef} className={styles.list}>
+      <div onScroll={() => scroll()} ref={scrollRef} className={styles.list}>
         <ChartList />
       </div>
       <div className={styles.send}>
@@ -127,13 +154,16 @@ function ChartRoomPage() {
           发送
         </Button>
       </div>
-      {/*<div className={styles.down}>*/}
-      {/*  <img*/}
-      {/*    className={styles.hand}*/}
-      {/*    src={require('@/assets/icons/gesture-down.png')}*/}
-      {/*  />*/}
-      {/*  <span className={styles.text}>您有新消息</span>*/}
-      {/*</div>*/}
+      <div
+        onClick={() => goBottom()}
+        className={hasNewChart ? styles.down : styles.hide}
+      >
+        <img
+          className={styles.hand}
+          src={require('@/assets/icons/gesture-down.png')}
+        />
+        <span className={styles.text}>您有新消息</span>
+      </div>
     </div>
   );
 }
