@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@ant-design/pro-layout": "^5.0.12",
+    "@types/react-transition-group": "^4.4.0",
     "@types/socket.io-client": "^1.4.33",
     "@umijs/hooks": "^1.9.3",
     "@umijs/preset-react": "1.x",
@@ -29,6 +30,7 @@
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-transition-group": "^4.4.1",
     "socket.io-client": "^2.3.0",
     "umi": "^3.2.9",
     "yorkie": "^2.0.0"
