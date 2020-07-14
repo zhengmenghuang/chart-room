@@ -90,7 +90,7 @@ function ChartRoomPage() {
   // 点击按钮后 滚到最底部
   const goBottom = () => {
     hasNewChart && setHasNewChart(false);
-    scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
+    scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   };
 
   // 监听页面滚动
