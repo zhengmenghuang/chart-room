@@ -1,0 +1,62 @@
+/**
+  页面转场动画
+ */
+
+.main {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.forward-enter {
+  &:extend(.main);
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.forward-enter-active {
+  &:extend(.main);
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 300ms ease-in;
+}
+
+.forward-exit {
+  &:extend(.main);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.forward-exit-active {
+  &:extend(.main);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 300ms ease-in;
+}
+
+.back-enter {
+  &:extend(.main);
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.back-enter-active {
+  &:extend(.main);
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 300ms ease-in;
+}
+
+.back-exit {
+  &:extend(.main);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.back-exit-active {
+  &:extend(.main);
+  opacity: 0;
+  transform: translate(100%);
+  transition: all 300ms ease-in;
+}
