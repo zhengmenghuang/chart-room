@@ -1,15 +1,11 @@
 .room {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-
   .list {
-    flex-grow: 1;
+    height: calc(100vh - 46px - constant(safe-area-inset-bottom));
+    height: calc(100vh - 46px - env(safe-area-inset-bottom));
     padding: 15px;
     overflow-y: auto;
 
-    /* 自己的消息 */
+    /* 公共消息 */
     .public {
       color: #80848f;
       font-size: 12px;
@@ -64,9 +60,13 @@
   }
 
   .send {
-    width: 100%;
+    height: 46px;
     display: flex;
-    padding: 8px;
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: calc(8px + constant(safe-area-inset-bottom));
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
     background-color: white;
 
     .input {

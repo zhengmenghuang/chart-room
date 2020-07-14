@@ -58,7 +58,7 @@ function ChartRoomPage() {
         scrollRef.current.scrollTop <=
       scrollRef.current.clientHeight * 0.3
     ) {
-      scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
+      goBottom();
     } else {
       !hasNewChart && setHasNewChart(true);
     }
@@ -78,11 +78,18 @@ function ChartRoomPage() {
   };
 
   // enter 键 发消息
-  const InputRef = useKeyPress('enter', () => sendMsg());
+  const InputRef: any = useKeyPress('enter', () => sendMsg());
+
+  // input 获得焦点 判断是否需要滚动到最低点 键盘弹起 有300ms延迟
+  const inputFocus = () => {
+    setTimeout(() => {
+      !hasNewChart && goBottom();
+    }, 400);
+  };
 
   // 点击按钮后 滚到最底部
   const goBottom = () => {
-    setHasNewChart(false);
+    hasNewChart && setHasNewChart(false);
     scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
   };
 
@@ -151,6 +158,7 @@ function ChartRoomPage() {
         <input
           ref={InputRef}
           {...chart}
+          onFocus={() => inputFocus()}
           placeholder="说点什么..."
           className={styles.input}
         />
