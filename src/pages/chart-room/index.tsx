@@ -33,38 +33,36 @@ function ChartRoomPage() {
   // 获取滚动元素
   const scrollRef: any = useRef();
 
-  // 页面初始化
-  useMount(() => {
+  // 初始化socket
+  const initSocket = () => {
     if (socket) return;
     // 连接socket服务 默认进入房间号 10010
-    socket = io('ws://192.168.137.1:6001?roomId=' + 10010);
+    socket = io('wss://www.llxhzm.xyz:6001?roomId=' + 10010);
     user = users[Math.floor(Math.random() * 4)];
     Toast.info(`当前您的身份为${user.name}`, 1.5);
     // 发送加入消息
     socket.emit('join', { ...user, time: getNowTimeParse() });
+    // 获取历史消息
+    socket.on('historyRecord', (value: any) => addChart(value));
     // 监听消息
-    socket.on('msg', (value: any) => {
-      record.push(value);
-      setRecord([...record]);
-      if (
-        scrollRef.current.scrollHeight -
-          scrollRef.current.clientHeight -
-          scrollRef.current.scrollTop <=
-        scrollRef.current.clientHeight * 0.3
-      ) {
-        scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
-      } else {
-        !hasNewChart && setHasNewChart(true);
-      }
-    });
-  });
+    socket.on('msg', (value: any) => addChart([value]));
+  };
 
-  // 页面卸载
-  useUnmount(() => {
-    if (!socket) return;
-    socket.close();
-    socket = null;
-  });
+  // 添加聊天记录到池子里
+  const addChart = (value: any) => {
+    record.push(...value);
+    setRecord([...record]);
+    if (
+      scrollRef.current.scrollHeight -
+        scrollRef.current.clientHeight -
+        scrollRef.current.scrollTop <=
+      scrollRef.current.clientHeight * 0.3
+    ) {
+      scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
+    } else {
+      !hasNewChart && setHasNewChart(true);
+    }
+  };
 
   // 本次输入框的内容
   const [chart, reset] = useEventTarget('');
@@ -131,6 +129,18 @@ function ChartRoomPage() {
       }
     });
   };
+
+  // 页面初始化
+  useMount(() => {
+    initSocket();
+  });
+
+  // 页面卸载
+  useUnmount(() => {
+    if (!socket) return;
+    socket.close();
+    socket = null;
+  });
 
   return (
     <div className={styles.room}>

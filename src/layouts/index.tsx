@@ -4,9 +4,7 @@ import { IRouteComponentProps, Switch } from 'umi';
 export default function Layout({
   children,
   location,
-  route,
   history,
-  match,
 }: IRouteComponentProps) {
   const ANIMATION_MAP: any = {
     PUSH: 'forward',
