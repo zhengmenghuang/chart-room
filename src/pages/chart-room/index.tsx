@@ -167,5 +167,7 @@ function ChartRoomPage() {
     </div>
   );
 }
+
 ChartRoomPage.title = 'ChartRoom';
+
 export default ChartRoomPage;
