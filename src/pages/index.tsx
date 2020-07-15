@@ -1,11 +1,16 @@
 import React from 'react';
+import { WingBlank, WhiteSpace, Button } from 'antd-mobile';
 import { history } from 'umi';
 
 const IndexPage = () => {
   return (
     <div>
-      <h1>Page index</h1>
-      <button onClick={() => history.push('/chart-room')}>聊天室</button>
+      <WhiteSpace size="lg" />
+      <WingBlank>
+        <Button type="ghost" onClick={() => history.push('/chart-room')}>
+          进入聊天室
+        </Button>
+      </WingBlank>
     </div>
   );
 };
