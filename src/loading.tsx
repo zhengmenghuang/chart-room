@@ -4,7 +4,7 @@ import { Spin } from 'antd';
 export default () => {
   return (
     <div className={'center-box'}>
-      <Spin tip="鉴权中..." />
+      <Spin tip="加载中..." />
     </div>
   );
 };
