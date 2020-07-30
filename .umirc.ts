@@ -4,7 +4,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  // dynamicImport: {
-  //   loading: '@/loading',
-  // },
+  dynamicImport: {
+    loading: '@/loading',
+  },
 });
