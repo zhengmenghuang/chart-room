@@ -2,7 +2,7 @@ import { Button, Result } from 'antd';
 import React from 'react';
 import { history } from 'umi';
 
-const NotFoundPage: { (): JSX.Element; title: any; path: any; } = () => {
+const NotFoundPage: { (): JSX.Element; title: any; path: any } = () => {
   return (
     <Result
       status="404"
@@ -18,6 +18,5 @@ const NotFoundPage: { (): JSX.Element; title: any; path: any; } = () => {
 };
 
 NotFoundPage.title = '404';
-NotFoundPage.path = undefined;
 
 export default NotFoundPage;
