@@ -37,7 +37,7 @@ function ChartRoomPage() {
   const initSocket = () => {
     if (socket) return;
     // 连接socket服务 默认进入房间号 10010
-    socket = io('wss://www.llxhzm.xyz:6001?roomId=' + 10010);
+    socket = io('wss://119.29.159.51:6001?roomId=' + 10010);
     user = users[Math.floor(Math.random() * 4)];
     Toast.info(`当前您的身份为${user.name}`, 1.5);
     // 发送加入消息
