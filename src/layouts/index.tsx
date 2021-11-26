@@ -1,6 +1,7 @@
 import React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { IRouteComponentProps, Switch } from 'umi';
+
 export default function Layout({
   children,
   location,
@@ -19,7 +20,10 @@ export default function Layout({
         })
       }
     >
-      <CSSTransition key={location.pathname} timeout={300}>
+      <CSSTransition
+        key={location.pathname}
+        timeout={history.location.pathname.includes('/tabs') ? 0 : 300}
+      >
         <Switch location={location}>{children.props.children}</Switch>
       </CSSTransition>
     </TransitionGroup>
