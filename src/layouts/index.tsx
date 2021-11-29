@@ -6,13 +6,13 @@ export default function Layout({
   children,
   location,
   history,
+  route,
+  routes,
 }: IRouteComponentProps) {
   const ANIMATION_MAP: any = {
     PUSH: 'forward',
     POP: 'back',
   };
-
-  console.log(15, history);
 
   return children;
 

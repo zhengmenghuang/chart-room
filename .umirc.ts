@@ -7,4 +7,5 @@ export default defineConfig({
   dynamicImport: {
     loading: '@/loading',
   },
+  antd: { mobile: false },
 });

@@ -39,7 +39,7 @@ function ChartRoomPage() {
     // 连接socket服务 默认进入房间号 10010
     socket = io(`ws://${window.location.hostname}:6001?roomId=10010`);
     user = users[Math.floor(Math.random() * 4)];
-    Toast.info(`当前您的身份为${user.name}`, 1.5);
+    Toast.show(`当前您的身份为${user.name}`);
     // 发送加入消息
     socket.emit('join', { ...user, time: getNowTimeParse() });
     // 获取历史消息
@@ -164,9 +164,9 @@ function ChartRoomPage() {
         />
         <Button
           onClick={() => sendMsg()}
-          type="ghost"
+          fill="outline"
           size="small"
-          inline
+          color="primary"
           className={styles.btn}
         >
           发送

@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { IRouteComponentProps } from 'umi';
-import { TabBar, Icon } from 'antd-mobile';
+import { TabBar } from 'antd-mobile';
+import { AntOutline, AlipaySquareFill, UserOutline } from 'antd-mobile-icons';
 import styles from './_layout.less';
 
 const tabs = [
-  { title: 'tab1', key: 'tab1', path: '/tabs/tab1', iconName: 'right' },
-  { title: 'tab2', key: 'tab2', path: '/tabs/tab2', iconName: 'check' },
-  { title: 'tab3', key: 'tab3', path: '/tabs/tab3', iconName: 'left' },
+  { title: 'tab1', key: '/tabs/tab1', iconName: <AntOutline /> },
+  { title: 'tab2', key: '/tabs/tab2', iconName: <AlipaySquareFill /> },
+  { title: 'tab3', key: '/tabs/tab3', iconName: <UserOutline /> },
 ];
 
 export default function _layout({
@@ -38,23 +39,14 @@ export default function _layout({
       <div>{children}</div>
       <div className={styles.footerTab}>
         <TabBar
-          unselectedTintColor="#949494"
-          tintColor="#33A3F4"
-          barTintColor="white"
-          noRenderContent
-          prerenderingSiblingsNumber={0}
-          tabBarPosition="bottom"
+          activeKey={history.location.pathname}
+          onChange={(key) => history.push(key)}
         >
           {tabs.map((item) => (
             <TabBar.Item
-              icon={<Icon type={item.iconName} />}
-              selectedIcon={<Icon type={item.iconName} />}
+              icon={item.iconName}
               title={item.title}
               key={item.key}
-              selected={history.location.pathname === item.path}
-              onPress={() => {
-                history.push(item.path);
-              }}
             />
           ))}
         </TabBar>
