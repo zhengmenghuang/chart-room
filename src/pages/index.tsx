@@ -7,9 +7,7 @@ const IndexPage = () => {
     <div>
       <WhiteSpace size="lg" />
       <WingBlank>
-        <Button type="ghost" onClick={() => history.push('/chart-room')}>
-          进入聊天室
-        </Button>
+        <Button onClick={() => history.push('/chart-room')}>进入聊天室</Button>
       </WingBlank>
     </div>
   );

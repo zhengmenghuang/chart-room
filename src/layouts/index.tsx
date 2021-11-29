@@ -12,20 +12,25 @@ export default function Layout({
     POP: 'back',
   };
 
-  return (
-    <TransitionGroup
-      childFactory={(child: any) =>
-        React.cloneElement(child, {
-          classNames: ANIMATION_MAP[history.action],
-        })
-      }
-    >
-      <CSSTransition
-        key={location.pathname}
-        timeout={history.location.pathname.includes('/tabs') ? 0 : 300}
-      >
-        <Switch location={location}>{children.props.children}</Switch>
-      </CSSTransition>
-    </TransitionGroup>
-  );
+  console.log(15, history);
+
+  return children;
+
+  // 体检并不好 主要是 history.action 给的值并不能按照想要的来（点击地址栏的前进后退都是 POP） 后续在研究
+  // return (
+  //   <TransitionGroup
+  //     childFactory={(child: any) =>
+  //       React.cloneElement(child, {
+  //         classNames: ANIMATION_MAP[history.action],
+  //       })
+  //     }
+  //   >
+  //     <CSSTransition
+  //       key={location.pathname}
+  //       timeout={300}
+  //     >
+  //       <Switch location={location}>{children.props.children}</Switch>
+  //     </CSSTransition>
+  //   </TransitionGroup>
+  // );
 }
