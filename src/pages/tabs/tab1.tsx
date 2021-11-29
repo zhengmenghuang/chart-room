@@ -1,12 +1,19 @@
 import React from 'react';
-import { Space, Button } from 'antd-mobile';
+import { Button } from 'antd-mobile';
 import { history } from '@@/core/history';
 
 const IndexPage = () => {
   return (
-    <Button color="primary" fill="outline" onClick={() => history.push('/')}>
-      进入首页
-    </Button>
+    <div style={{ padding: '10px' }}>
+      <Button
+        block
+        color="primary"
+        fill="outline"
+        onClick={() => history.push('/')}
+      >
+        进入首页
+      </Button>
+    </div>
   );
 };
 IndexPage.title = 'tab1';

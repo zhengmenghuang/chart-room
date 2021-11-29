@@ -1,16 +1,19 @@
 import React from 'react';
-import { Space, Button } from 'antd-mobile';
+import { Button } from 'antd-mobile';
 import { history } from 'umi';
 
 const IndexPage = () => {
   return (
-    <Button
-      color="primary"
-      fill="outline"
-      onClick={() => history.push('/chart-room')}
-    >
-      进入聊天室
-    </Button>
+    <div style={{ padding: '10px' }}>
+      <Button
+        block
+        color="primary"
+        fill="outline"
+        onClick={() => history.push('/chart-room')}
+      >
+        进入聊天室
+      </Button>
+    </div>
   );
 };
 IndexPage.title = 'umi3 demo';
