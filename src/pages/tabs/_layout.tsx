@@ -22,7 +22,7 @@ export default function _layout({
     // 重定向
     if (nowPath === '/tabs') {
       setTimeout(() => {
-        history.replace('/tabs/tab1');
+        history.replace('/tabs/tab2');
       }, 0);
     }
 
