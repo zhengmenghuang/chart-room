@@ -20,9 +20,19 @@ const IndexPage = () => {
           block
           color="primary"
           fill="outline"
-          onClick={() => history.push('/pdf')}
+          onClick={() => history.push('/react-pdf')}
         >
-          查看pdf
+          查看react-pdf
+        </Button>
+      </div>
+      <div style={{ padding: '10px' }}>
+        <Button
+          block
+          color="primary"
+          fill="outline"
+          onClick={() => history.push('/react-file-viewer')}
+        >
+          查看react-file-viewer
         </Button>
       </div>
     </>

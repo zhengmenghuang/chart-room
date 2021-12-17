@@ -27,5 +27,5 @@ const IndexPage = () => {
     </>
   );
 };
-IndexPage.title = 'pdf';
+IndexPage.title = 'react-pdf';
 export default IndexPage;
