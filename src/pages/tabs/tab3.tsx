@@ -10,7 +10,7 @@ const IndexPage = () => {
   useEffect(() => {
     const pdfh5 = new Pdfh5('#demo', {
       pdfurl: fileUrl,
-      lazy: true,
+      zoomEnable: false,
     });
 
     pdfh5.on('complete', (status: string, msg: string, time: string) => {
