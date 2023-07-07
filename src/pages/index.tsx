@@ -13,6 +13,19 @@ const IndexPage = () => {
       >
         进入聊天室
       </Button>
+
+      <div
+        style={{
+          width: '100%',
+          textAlign: 'center',
+          position: 'fixed',
+          bottom: 15,
+        }}
+      >
+        <a href="https://beian.miit.gov.cn/" target="_blank">
+          皖ICP备2021017436号
+        </a>
+      </div>
     </div>
   );
 };
